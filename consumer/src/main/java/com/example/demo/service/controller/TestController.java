@@ -36,6 +36,7 @@ public class TestController {
     public  String  findUser(){
        int a =   userService.getAllUsers();
         return "用户总量 : " +a;
-
     }
+
+
 }
