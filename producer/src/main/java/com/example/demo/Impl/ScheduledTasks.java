@@ -7,9 +7,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 @Component
 public class ScheduledTasks {
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 50000)
         public   void  getCuurentDate(){
         LocalDateTime localDateTime = LocalDateTime.now();
-        System.out.println("当前时间==:"+localDateTime);
+        System.out.println("当前时间:"+localDateTime);
     }
 }

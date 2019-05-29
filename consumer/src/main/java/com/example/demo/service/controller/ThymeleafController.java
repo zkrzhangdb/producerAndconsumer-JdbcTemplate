@@ -4,9 +4,11 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.example.demo.entity.User;
 import com.example.demo.service.MybatisService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import sun.misc.Version;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -22,11 +24,29 @@ public class ThymeleafController {
     private MybatisService mybatisService;
 
     @RequestMapping("get")
-    public  String  get(Map<String,Object> map){
+    public  String  get(Model model){
         User user =mybatisService.findUserByName("张三");
-        map.put("name",user.getName());
-        map.put("age",user.getAge());
+        model.addAttribute("name",user.getName());
+        model.addAttribute("age","<span style='color:red'>"+
+                String.valueOf(user.getAge())+"</span>");
         return  "home";
     }
+
+    @RequestMapping("getUser")
+    public  String  getUser(Model model){
+        User user =mybatisService.findUserByName("张三");
+        model.addAttribute("member",user);
+        return  "getUser";
+    }
+
+
+    @RequestMapping("getUserList")
+    public  String  getUserList(Model model){
+        List<User> userList =mybatisService.findAllUsers();
+        model.addAttribute("userList",userList);
+        return  "userList";
+    }
+
+
 }
 

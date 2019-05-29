@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SpringBoot模版渲染</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+</head>
+<body>
+<p th:text="'姓名：' + ${member.name}"/>
+<p th:text="'年龄：' + ${member.age}"/>
+
+<hr/>
+<div th:object="${member}">
+<p th:text="'姓名：' +*{name} "/>
+<p th:text="'年龄：' +*{age}"/>
+</div>
+
+<span th:unless="${member.age gt  18}">
+你还不满18岁，不能够看电影！
+</span>
+<hr/>
+<span th:switch="${member.age}">
+    <p th:case="18">年龄18</p>
+    <p th:case="12">年龄12</p>
+    <p th:case="*">没有匹配成功的数据！</p>
+</span>
+
+<hr/>
+<a th:href="@{/home}">访问home方法</a>
+<hr/>
+
+
+<span th:if ="${member.name eq '张三'}">
+    张三
+</span>
+
+
+</body>
+
+</html>
