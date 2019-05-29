@@ -2,3 +2,8 @@
 http://blog.didispace.com/categories/Spring-Boot/page/4/
 
 http://www.spring4all.com/article/246
+
+模板开发文档 thymeleaf
+https://www.jianshu.com/p/a842e5b5012e
+
+

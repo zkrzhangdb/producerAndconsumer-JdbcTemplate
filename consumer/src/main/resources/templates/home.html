@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 </head>
 <body>
+<div th:include="@{footer} :: companyInfo" th:with="projectName=百度"/>
 <h2 th:text="'欢迎 : ' "/>
 <a th:href="@{/getUserList}">用户列表</a>
 </body>
