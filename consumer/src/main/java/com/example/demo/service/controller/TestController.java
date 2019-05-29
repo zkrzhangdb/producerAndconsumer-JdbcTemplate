@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 public class TestController {
+
     @Reference(version = "${demo.service.version}")
     private TestService  testService;
     @RequestMapping("/test/{name}")
@@ -24,19 +27,16 @@ public class TestController {
         return  "添加用户成功，用户名:"+name;
     }
 
-
     @RequestMapping("/del/{name}")
     public  String  delUser(@PathVariable(value = "name") String name ){
         userService.deleteByName(name);
         return  "删除用户成功，用户名:"+name;
     }
 
-
     @RequestMapping("/find")
     public  String  findUser(){
        int a =   userService.getAllUsers();
         return "用户总量 : " +a;
     }
-
 
 }
