@@ -19,6 +19,13 @@ public class MybatisController {
         return    mybatisService.findUserByName(name);
     }
 
+    @RequestMapping("/insert/{name}")
+    public String insert(@PathVariable(value = "name") String name ){
+    mybatisService.insert(name,16);
+
+        return "添加用户成功";
+    }
+
 
 
 }
