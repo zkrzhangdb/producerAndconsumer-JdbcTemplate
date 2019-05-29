@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Component
 public class ScheduledTasks {
     @Scheduled(fixedRate = 5000)
-    public   void  getCuurentDate(){
+        public   void  getCuurentDate(){
         LocalDateTime localDateTime = LocalDateTime.now();
         System.out.println("当前时间:"+localDateTime);
     }

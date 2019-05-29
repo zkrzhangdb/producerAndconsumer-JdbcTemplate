@@ -11,6 +11,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @Service(version ="${demo.service.version}" )
 @Mapper
 public class MybatisServiceImpl  implements MybatisService {
@@ -24,9 +26,19 @@ public class MybatisServiceImpl  implements MybatisService {
 
     public User findUserByName(String name){
         User user=
-        batisService.findByName(name);
+                batisService.findByName(name);
         return   user;
     }
+
+
+    public List<User> findAllUsers(){
+       return batisService.findAll();
+    }
+
+
+
+
+
 
 
 
