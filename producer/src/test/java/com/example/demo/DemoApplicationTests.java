@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.Impl.Task;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +25,14 @@ public class DemoApplicationTests {
 
 		System.out.println("获取某个值："+stringRedisTemplate.opsForValue().get("b"));
 
+	}
 
+	@Autowired
+	private Task task;
+	@Test
+	public void TestaAscy(){
+		task.sayOne();
+		task.sayTwo();
+		task.sayThree();
 	}
 }
