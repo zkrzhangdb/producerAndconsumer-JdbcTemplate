@@ -6,4 +6,6 @@ http://www.spring4all.com/article/246
 模板开发文档 thymeleaf
 https://www.jianshu.com/p/a842e5b5012e
 
+springboot+dubbo+thymeleaf模板+bootstrap+mysql数据库+redis缓存数据库 项目例子
+https://github.com/heng1234/springboot
 
