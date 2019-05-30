@@ -15,4 +15,14 @@ public interface UserMapper {
 
     public  int  delUserById(Integer id);
 
+    public  int  saveUser(User user);
+
+    public  int  getUserCount();
+
+    public  int  updateUser(User user);
+
+
+
 }
+
+

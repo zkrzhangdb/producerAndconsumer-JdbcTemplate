@@ -13,6 +13,11 @@ public interface UserServiceNew {
 
     public  int  delUserById(Integer id);
 
+    public  int  saveUser(User user);
 
 
+    public  int  updateUser(User user);
+
+
+    public  int  getUserCount();
 }

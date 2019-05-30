@@ -10,4 +10,14 @@ public interface UserServiceNew {
     List<User> getUserByPage(Map<String, Object> map);
     //删除通过 id
     public  int  delUserById(Integer id);
+
+    public  int  saveUser(User user);
+
+    public  int  updateUser(User user);
+
+    public  int  getUserCount();
+
+
+
+
 }

@@ -31,39 +31,45 @@ public class NewMybatisController {
 
     @RequestMapping("/index")
     public String toIndex(@RequestParam(value = "curPage",required = false) Integer curPage, Model model){
-        int pageSize = 6;//煤业显示数量
+        int pageSize = 6;//
         if(curPage == null){
             curPage = 1;
         }
         //总数
-        // int totle =  userServiceNew.getUserTotle();
-        int totle=5;
-        //计算分页
-        int totlePage = totle / pageSize;
-        //有可能有余数
-        int left = totle % pageSize;
-        if(left > 0) {
-            totlePage +=1;
-        }
-        if(curPage < 1){
-            curPage = 1;
-        }
-        if(curPage > totlePage){
-            curPage = totlePage;
-        }
+        int totle =  userServiceNew.getUserCount();
 
-        Map<String,Object> map = new HashMap<String,Object>();
-        //计算查询的开始行
-        int page = (curPage - 1) * pageSize;
-        map.put("page",page);
-        map.put("pageSize",pageSize);
-        List<User> userList = userServiceNew.getUserByPage(map);
-        model.addAttribute("userList",userList);
-        model.addAttribute("curPage",curPage);
-        model.addAttribute("totlePage",totlePage);
-        model.addAttribute("pageSize",pageSize);
-        model.addAttribute("totle",totle);
-        System.out.println(userList);
+            // int totle=5;
+            //计算分页
+            int totlePage = totle / pageSize;
+            //有可能有余数
+            int left = totle % pageSize;
+            if(left > 0) {
+                totlePage +=1;
+            }
+            if(curPage < 1){
+                curPage = 1;
+            }
+            if(curPage > totlePage){
+                curPage = totlePage;
+            }
+
+            Map<String,Object> map = new HashMap<String,Object>();
+            //计算查询的开始行
+            int page = (curPage - 1) * pageSize;
+            if(totle==0){
+                page=0;
+            }
+            map.put("page",page);
+            map.put("pageSize",pageSize);
+            List<User> userList = userServiceNew.getUserByPage(map);
+            model.addAttribute("userList",userList);
+            model.addAttribute("curPage",curPage);
+            model.addAttribute("totlePage",totlePage);
+            model.addAttribute("pageSize",pageSize);
+            model.addAttribute("totle",totle);
+            System.out.println(userList);
+
+
         //跳转到模板页面
         return "index";
     }
@@ -71,8 +77,35 @@ public class NewMybatisController {
 
     @RequestMapping("user/deleteUser")
     public  String  deleteUser(@RequestParam(value = "id")  Integer id ){
-        userServiceNew.delUserById(1);
+        userServiceNew.delUserById(id);
         return  "redirect:/index";
+    }
+
+
+    @RequestMapping("user/toSaveUser")
+    public  String  toSaveUser(){
+        return  "saveUser";
+    }
+
+
+
+    @RequestMapping("user/saveOrUpdateUser")
+    public  String  saveOrUpdateUser(User  user){
+        if("".equals(user.getId())||null==user.getId()){
+            userServiceNew.saveUser(user);
+        }else{
+            userServiceNew.updateUser(user);
+        }
+        return  "redirect:/index";
+    }
+
+
+    @RequestMapping("user/toUpdateUser")
+    public  String  toUpdateUser(@RequestParam(value = "id")  Integer id ,Model model){
+
+        User user = userServiceNew.findUser(id);
+        model.addAttribute("user",user);
+        return  "saveUser";
     }
 
 
