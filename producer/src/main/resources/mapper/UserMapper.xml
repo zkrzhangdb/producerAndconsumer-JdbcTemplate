@@ -18,6 +18,23 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
+  <!--分页查询-->
+  <select id="getUserByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    limit #{page},#{pageSize}
+  </select>
+
+  <delete id="delUserById" parameterType="java.lang.Integer" >
+    delete from user where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+
+
+
+
+
 
 
 
