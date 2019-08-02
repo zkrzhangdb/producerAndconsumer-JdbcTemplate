@@ -1,6 +1,7 @@
 package com.example.demo.service.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.example.demo.entity.Code;
 import com.example.demo.entity.User;
 import com.example.demo.service.MybatisService;
 import org.springframework.stereotype.Controller;
@@ -42,7 +43,7 @@ public class ThymeleafController {
 
     @RequestMapping("getUserList")
     public  String  getUserList(Model model){
-        List<User> userList =mybatisService.findAllUsers();
+        List<Code> userList =mybatisService.findAllUsers("");
         model.addAttribute("userList",userList);
         return  "userList";
     }

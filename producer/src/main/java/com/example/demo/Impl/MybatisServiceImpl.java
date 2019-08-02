@@ -3,6 +3,7 @@
 package com.example.demo.Impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.example.demo.entity.Code;
 import com.example.demo.entity.User;
 import com.example.demo.service.BatisService;
 import com.example.demo.service.MybatisService;
@@ -16,11 +17,11 @@ import java.util.List;
 @Service(version ="${demo.service.version}" )
 @Mapper
 public class MybatisServiceImpl  implements MybatisService {
-   @Autowired
-   private BatisService batisService;
+    @Autowired
+    private BatisService batisService;
 
-   public  void insert(String  name ,Integer age){
-       batisService.insert(name,age);
+    public  void insert(String  name ,Integer age){
+        batisService.insert(name,age);
     }
 
 
@@ -31,9 +32,11 @@ public class MybatisServiceImpl  implements MybatisService {
     }
 
 
-    public List<User> findAllUsers(){
-       return batisService.findAll();
+    public List<Code> findAllUsers(String codetype){
+        return batisService.findAll(codetype);
     }
+
+
 
 
 

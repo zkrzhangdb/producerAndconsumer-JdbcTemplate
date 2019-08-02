@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.Code;
 import com.example.demo.entity.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -11,7 +12,7 @@ public interface MybatisService {
 
     public User findUserByName(String name);
 
-    public List<User> findAllUsers();
+    public List<Code> findAllUsers(String codename);
 
 
 }
